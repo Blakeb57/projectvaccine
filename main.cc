@@ -69,7 +69,7 @@ int main()
                 break;
             
 	        case '3':
-		            cout<<"Enter the name of the person who is to be removed.\n ";
+		        cout<<"Enter the name of the person who is to be removed.\n ";
                 while(cin.peek() == '\n' || cin.peek() == '\r')
                     cin.ignore();
                 getline(cin, patientname);
@@ -88,10 +88,10 @@ int main()
 		        break;
             
 	        case '5':
-		            cout << "The longest wait = ";
-		            convert_minutes(superdrug.longest_wait());
-		            cout << endl;
-		            break;
+                cout << "The longest wait = ";
+                convert_minutes(superdrug.longest_wait());
+                cout << endl;
+                break;
             
 	        case '6':
 		        cout << "The average wait time of all in line = ";
