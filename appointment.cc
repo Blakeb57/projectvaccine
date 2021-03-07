@@ -50,9 +50,9 @@ void Appointment::output(ostream& outs)const
 unsigned Appointment::minutes_waiting()const
 {
 	unsigned nowminutes = time(NULL)/60;
-//cout<<"Minutes since 1970 = "<<nowminutes<<endl;
+    //cout<<"Minutes since 1970 = "<<nowminutes<<endl;
 	nowminutes -= 659;
-  return nowminutes - called.minutes_since_1970();
+    return nowminutes - called.minutes_since_1970();
 }
 
 void convert_minutes(unsigned minutes)
@@ -60,8 +60,8 @@ void convert_minutes(unsigned minutes)
  	int days = minutes/1440;
 	minutes %= 1440;
 	int hours = minutes/60;
-  minutes %= 60;
-  cout << days << " Days, " << hours << " hours, " << minutes << " minutes.\n";
+    minutes %= 60;
+    cout << days << " Days, " << hours << " hours, " << minutes << " minutes.\n";
 }
 
 // Input and output operarators for those who might want to use them

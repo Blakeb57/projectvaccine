@@ -1,12 +1,12 @@
 /********************************************
-    This is the record of a person waiting for an appointment for their
-    COVID-19 vaccine. It includes the person's name, age and the date
-    and time when they called in to get the appointment.
-    Overloaded comparison operators compare the time they called in,
-    with less than meanng that the left operand has called in earlier
-    than the righ operand.
-          John Dolan		Ohio University		School of EECs
-				Spring 2021
+//    This is the record of a person waiting for an appointment for their
+//    COVID-19 vaccine. It includes the person's name, age and the date
+//    and time when they called in to get the appointment.
+//    Overloaded comparison operators compare the time they called in,
+//    with less than meanng that the left operand has called in earlier
+//    than the righ operand.
+//          John Dolan		Ohio University		School of EECs
+//				Spring 2021
 ***********************************************/
 #include<iostream>
 #include<string>

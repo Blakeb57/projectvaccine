@@ -13,16 +13,16 @@ int main()
    Appointment grandma;
    int age;
   
-// cout << "Enter the person's date of birth: ";
-// cin >> person;
-// cout << "Minutes since 1/1/1970: "<< person.minutes_since_1970() << endl;
-// cout << "Enter today's date: ";
-// cin >> today;
+   // cout << "Enter the person's date of birth: ";
+   // cin >> person;
+   // cout << "Minutes since 1/1/1970: "<< person.minutes_since_1970() << endl;
+   // cout << "Enter today's date: ";
+   // cin >> today;
 
    today.make_today();
    cout << today << endl;
-// age = person.age(today);
-// cout << "That person is " << age << " years old.\n";
+   // age = person.age(today);
+   // cout << "That person is " << age << " years old.\n";
 
    grandma.input(cin);
    grandma.output(cout);

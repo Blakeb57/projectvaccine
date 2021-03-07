@@ -1,9 +1,9 @@
 /***************************************************************************************************
-   I found that I wanted a class that would do both time and date, and so I have created this 
-   by merging the date class that I have been using for many years with the MyTime class I have been 
-   using for many years. I have merged the three classes into a single file so that they used as a
-   single unit by the application programmer.
-	John Dolan		Ohio University EECS		Spring 2021
+//   I found that I wanted a class that would do both time and date, and so I have created this 
+//   by merging the date class that I have been using for many years with the MyTime class I have been 
+//   using for many years. I have merged the three classes into a single file so that they used as a
+//   single unit by the application programmer.
+//	John Dolan		Ohio University EECS		Spring 2021
 *************************************************************************************************/
 
 #include <iostream>
@@ -43,10 +43,10 @@ class Date
         Date(int d,int m,int y);
 
     // outputs the date
-        friend std::ostream& operator <<(std::ostream& outs, Date d);
+        friend std::ostream& operator << (std::ostream& outs, Date d);
 
     //inputs the date
-        friend std::istream& operator >>(std::istream& ins, Date& d);
+        friend std::istream& operator >> (std::istream& ins, Date& d);
 
 /**************************************************
         COMPARSION OPERATORS
@@ -63,11 +63,11 @@ class Date
 
         bool operator >= (const Date& d2)const;
 	
-	      int age(const Date& tday)const;
+	    int age(const Date& tday)const;
 
-	      void make_today();
-        
-	      unsigned minutes_since_1970()const;
+	    void make_today();
+
+	    unsigned minutes_since_1970()const;
 
     private:
         int day;
@@ -83,14 +83,14 @@ class DateTime
 {
     public:
       	DateTime();
-	      bool operator <(const DateTime& other)const;
+	    bool operator <(const DateTime& other)const;
         void input(std::istream& ins);
-	      void output(std::ostream& outs)const;
+	    void output(std::ostream& outs)const;
         unsigned minutes_since_1970()const;
   
     private:
-	      Date datepart;
-	      int hour, minute;
+	    Date datepart;
+	    int hour, minute;
 };
 
 #endif
