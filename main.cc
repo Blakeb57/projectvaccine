@@ -125,7 +125,7 @@ int main()
                     cin.ignore();
                 getline(cin, patientname);
                 apcopy.remove(patientname);
-                apcopy.display();
+                apcopy.display(cout);
                 cout << "Number waiting = " << apcopy.waiting() << endl;
                 break;
 		    }  // copy goes out of scope

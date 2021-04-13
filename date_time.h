@@ -52,21 +52,13 @@ class Date
         COMPARSION OPERATORS
 **************************************************/
         bool operator > (const Date& d2)const;
-
         bool operator < (const Date& d2)const;
-
         bool operator == (const Date& d2)const;
-
         bool operator != (const Date& d2)const;
-
         bool operator <= (const Date& d2)const;
-
         bool operator >= (const Date& d2)const;
-	
 	    int age(const Date& tday)const;
-
 	    void make_today();
-
 	    unsigned minutes_since_1970()const;
 
     private:
@@ -83,7 +75,7 @@ class DateTime
 {
     public:
       	DateTime();
-	    bool operator <(const DateTime& other)const;
+	    bool operator < (const DateTime& other)const;
         void input(std::istream& ins);
 	    void output(std::ostream& outs)const;
         unsigned minutes_since_1970()const;
