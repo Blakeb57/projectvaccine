@@ -162,7 +162,7 @@ Appointment Waiting::find(std::string target) const
 
 double Waiting::avg_wait_time(node *head)
 {
-
+    
 }
 
 int Waiting::waiting()const
