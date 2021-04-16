@@ -100,11 +100,11 @@ int main()
 		        break;
             
 	        case '7':
-                cout << "The oldest person in line is " << superdrug.oldest() << " years old.\n";
+                cout << "The oldest person in line is " << superdrug.oldest()->data().get_name() << ".\n";
                 break;
             
 	        case '8':
-                cout << "The youngest person in line is " << superdrug.youngest() << " years old.\n";
+                cout << "The youngest person in line is " << superdrug.youngest()->data().get_name() << "\n";
                 break;
             
 	        case '9':

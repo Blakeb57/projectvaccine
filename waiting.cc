@@ -98,7 +98,6 @@ void Waiting::add(Appointment tmp)
 void Waiting::display(ostream &outs)const
 {
     const node * cursor = head;
-
     while(cursor !=  NULL)
     {
         cout << cursor->data() << endl;
@@ -133,18 +132,6 @@ void Waiting::remove(string target)
     }
 }
 
-int Waiting::size(const node *head)
-{
-	const node* cursor = head;
-	int count = 0;
-	while(cursor != NULL)
-    {
-  	    count++;
-	    cursor = cursor -> link();
-	}
-	return count;
-}
-
 Appointment Waiting::find(std::string target) const
 {
     node *cursor;
@@ -153,90 +140,105 @@ Appointment Waiting::find(std::string target) const
     {
         if(cursor -> data().get_name() == target)
         {
-            return cursor->data() ;
+            return cursor->data();
         }
     }
 
     return Appointment();
 }
 
-double Waiting::avg_wait_time(node *head)
-{
-    
-}
-
 int Waiting::waiting()const
 {
-    int total = 0;
+    int count = 0;
 
     for(node *tmp = head; tmp != NULL; tmp = tmp->link())
     {
-        total += stoi(tmp->data().get_name());
+        ++count;
     }
-    cout << "Total number of people waiting: " << total << endl;
+    cout << "Total number of people waiting: " << count << endl;
+    return count;
 }
 
 unsigned Waiting::longest_wait()const
 {
-    DateTime max;
-    
-    if(head == NULL)
-    {
-        cout << "Error" << endl;
-        return 0;
-    }
     node *ptr = head;
-    
-    while (ptr != NULL)
-    {
-        if(max < ptr->data().get_callin())
-        {
-            max = ptr->data().get_callin();
-        }
-        ptr = ptr->link();
-    }
+    unsigned max = 0;
 
-    return max.minutes_since_1970(); 
-    
-
-    /*
     if(head == NULL)
     {
-        return;
+        cout << "Empty List." << endl;
+        return max;
     }
-    else{
-        for(ptr = head; ptr->link() != NULL; ptr = ptr->link())
-        {
-            for(ptr2 = ptr->link(); ptr2 != NULL; ptr2 = ptr2->link())
-            {
-                if(ptr->size() > ptr2->size())
-                {
-
-                }
-            }
-        }
-    }
-    */
+    max = ptr->data().minutes_waiting();
+    return max;
 }
 
 unsigned Waiting::average_wait()const
 {
-
+    int count = 0;
+    double average = 0;
+    double sum = 0;
+    
+    for(node *ptr = head; ptr != NULL; ptr = ptr->link())
+    {
+        count++;
+        sum += ptr->data().minutes_waiting();
+    }
+    average = sum / count;
+    return average;
 }
 
-unsigned Waiting::oldest()const
+node* Waiting::oldest()const
 {
-
+    node* oldest = head;
+    Date tmp = head->data().get_bday();
+    Date today;
+    today.make_today();
+    
+    for(node *ptr = head; ptr != NULL; ptr = ptr->link())
+    {
+        if(tmp > ptr->data().get_bday())
+        {
+            oldest = ptr;
+            tmp = ptr->data().get_bday();
+        }
+    }
+    return oldest;
 }
 
-unsigned Waiting::youngest()const
+node* Waiting::youngest()const
 {
+    node* young;
+    Date tmp;
+    Date today;
+    today.make_today();
 
+    for(node *ptr = head; ptr != NULL; ptr = ptr->link())
+    {
+        if(tmp < ptr->data().get_bday())
+        {
+            young = ptr;
+            tmp = ptr->data().get_bday();
+        }
+    }
+    return young;
 }
 
 unsigned Waiting::average_age()const
 {
-
+    int count = 0;
+    double average = 0;
+    double sum = 0;
+    Date tday;
+    tday.make_today();
+    
+    for(node *ptr = head; ptr != NULL; ptr = ptr->link())
+    {
+        count++;
+        sum += ptr->data().get_bday().age(tday);
+    }
+    average = sum / count;
+    return average;
 }
 
 void Waiting::save(ostream& outs)const
@@ -256,12 +258,13 @@ void Waiting::save(ostream& outs)const
     }
 }
 
-void Waiting::load(std::istream& ins)
+void Waiting::load(istream& fin)
 {
     Appointment tmp;
     node *cursor;
 
-    while(!ins.eof())
+    tmp.input(fin);
+    while(!fin.eof())
     {   
         if(head == NULL)
         {
@@ -271,7 +274,6 @@ void Waiting::load(std::istream& ins)
         }
         else{
             cursor = head;
-
             while(cursor -> link() != NULL)
             {
                 cursor = cursor -> link();
@@ -281,6 +283,6 @@ void Waiting::load(std::istream& ins)
             cursor -> set_data(tmp);
             cursor -> set_link(NULL);
         }
-        tmp.input(ins);
+        tmp.input(fin);
     }
 }
